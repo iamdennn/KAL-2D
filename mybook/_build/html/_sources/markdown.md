@@ -275,22 +275,108 @@ hitung_translasi('E', 'F', 'T4')
 ```
 ---
 
-## Citations
+## **C.Animasi Transformasi Refleksi terhadap Sumbu Y**
 
-You can also cite references that are stored in a `bibtex` file. For example,
-the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
-this: {cite}`holdgraf_evidence_2014`.
+### Code Program
 
-Moreover, you can insert a bibliography into your page with this syntax:
-The `{bibliography}` directive must be used for all the `{cite}` roles to
-render properly.
-For example, if the references for your book are stored in `references.bib`,
-then the bibliography is inserted with:
+```python
+from IPython.display import HTML
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
-```{bibliography}
+# Titik awal
+points = {
+    "A": (2, 3),
+    "B": (2, 4),
+    "C": (3, 4),
+    "D": (3, 3),
+    "I": (2, 2),
+    "J": (3, 2),
+    "K": (2, 1),
+    "L": (3, 1),
+    "M": (2, -1),
+    "N": (3, -1),
+    "O": (2, -2),
+    "P": (3, -2),
+    "E": (2, -3),
+    "F": (3, -3),
+    "G": (2, -4),
+    "H": (3, -4)
+}
+
+# Membuat figure
+fig, ax = plt.subplots(figsize=(8,8))
+
+# Menyimpan objek titik
+titik_asli = {}
+titik_cermin = {}
+
+# Membuat titik asli dan titik cermin
+for nama, (x, y) in points.items():
+
+    # Titik asli
+    p1 = ax.plot(x, y, 'bo', markersize=8)[0]
+    t1 = ax.text(x + 0.1, y + 0.1, nama)
+
+    # Titik hasil cermin
+    p2 = ax.plot(-x, y, 'ro', markersize=8)[0]
+    t2 = ax.text(-x + 0.1, y + 0.1, nama + "'")
+
+    titik_asli[nama] = (p1, t1)
+    titik_cermin[nama] = (p2, t2)
+
+# Tampilan grafik
+ax.set_xlim(-5, 5)
+ax.set_ylim(-5, 5)
+
+ax.axhline(0, color='black')
+ax.axvline(0, color='black')
+
+ax.grid(True)
+
+# Fungsi animasi
+def animate(frame):
+
+    # Gerak maju lalu kembali
+    if frame <= 100:
+        t = frame / 100
+    else:
+        t = (200 - frame) / 100
+
+    for nama, (x, y) in points.items():
+
+        # Posisi bertukar
+        x_asli = x + (-x - x) * t
+        x_cermin = -x + (x + x) * t
+
+        # Update titik asli
+        titik_asli[nama][0].set_data([x_asli], [y])
+        titik_asli[nama][1].set_position((x_asli + 0.1, y + 0.1))
+
+        # Update titik cermin
+        titik_cermin[nama][0].set_data([x_cermin], [y])
+        titik_cermin[nama][1].set_position((x_cermin + 0.1, y + 0.1))
+
+# Membuat animasi
+animasi = FuncAnimation(
+    fig,
+    animate,
+    frames=201,
+    interval=40,
+    repeat=True
+)
+
+# Judul
+plt.title("Animasi Transformasi Cermin Bertukar Tempat")
+
+# Simpan GIF
+animasi.save("animasi.gif", writer="pillow")
+
+# Tampilkan animasi
+plt.show()
 ```
 
-## Learn more
+### Hasil Output
+### Animasi
+![Animasi](animasi.gif)
 
-This is just a simple starter to get you started.
-You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
