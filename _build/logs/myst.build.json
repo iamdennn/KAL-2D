@@ -1,7 +1,7 @@
 {
   "input": {
     "files": [
-      "mybook/"
+      "."
     ],
     "opts": {
       "execute": false,
