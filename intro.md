@@ -125,6 +125,105 @@ IFrame(
 ```
 ---
 
+# Matriks
+
+## 2.1 Aritmetika Matriks
+
+Matriks memainkan peran dalam membahas tentang sistem linear di **Bab 1**. Dalam bab ini membahas lebih mendalam tentang matriks.
+
+Seperti topik matematika lainnya, matriks dapat digunakan dalam banyak hal. Dengan demikian, penting untuk membahas lebih detail dalam kursus ini.
+
+### Prinsip 2.1.1. Matriks. Tidak setiap matriks harus dianggap sebagai matriks augmented yang terkait dengan sistem linear.
+
+### 2.1.1 Dasar-dasar matriks
+
+Kita mulai dengan beberapa definisi mendasar tentang matriks, kesamaan matriks, dan jenis-jenis matriks khusus. Seperti yang diperjelas oleh definisi berikut ini, matriks hanyalah urutan bilangan yang diatur dengan cara yang sangat khusus.
+
+### Definisi 2.1.2. Matriks. Sebuah *matriks (riil)* adalah susunan persegi panjang dari bilangan riil.
+$$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$$  *(2.1.1)*
+
+Bilangan $a_{ij}$ yang terletak pada baris ke-$i$ dan kolom ke-$j$ dari $A$ disebut **entri-$(i, j)$** (atau **entri-$ij$**) dari $A$.
+
+Sebuah matriks dengan $m$ baris dan $n$ kolom dikatakan memiliki **ukuran** (atau **dimensi**) $m \times n$.
+
+Matriks biasanya menggunakan huruf kapital awal alfabet (misal: $A, B, C, D$, dll.) untuk menunjukkan matriks.
+
+Matriks yang ditampilkan dalam (2.1.1) sulit dalam ruang yang dibutuhkan untuk menampilkannya, maupun waktu yang dibutuhkan untuk menulis atau mengetiknya. Oleh karena itu kami memperkenalkan dua bentuk notasi yang agak saling melengkapi untuk membantu mendeskripsikan matriks.
+
+### Definisi 2.1.3. Notasi Matriks.
+Notasi pembangun matriks:** Notasi $[a_{ij}]_{m \times n}$ menunjukkan matriks $m \times n$ yang entri $ij$-nya (baris ke-$i$, kolom ke-$j$) adalah $a_{ij}$. Ketika tidak ada bahaya kebingungan, notasi ini sering disingkat menjadi $[a_{ij}]$.
+ 
+**Notasi entri matriks:** Diberikan sebuah matriks $A$, notasi $[A]_{ij}$ menunjukkan entri ke-$ij$ dari $A$.
+
+Jadi jika $A = [a_{ij}]_{m \times n}$, maka $[A]_{ij} = a_{ij}$ untuk semua $1 \le i \le m$ dan $1 \le j \le n$.
+
+### Catatan 2.1.4. Notasi untuk menyatakan matriks sering digunakan hanya untuk memberikan nama pada entri-entri dari suatu matriks sembarang. Namun, ini juga dapat digunakan untuk mendeskripsikan matriks yang entri $ij$-nya diberikan oleh aturan atau formula tertentu.
+
+Sebagai contoh, misalkan $A = [a_{ij}]_{2 \times 3}$, dimana $a_{ij} = (i - j)j$. Ini adalah matriks $2 \times 3$ yang entri $ij$-nya adalah $(i - j)j$. Jadi
+
+$$A = \begin{bmatrix} (1 - 1)1 & (1 - 2)2 & (1 - 3)3 \\ (2 - 1)1 & (2 - 2)2 & (2 - 3)3 \end{bmatrix} = \begin{bmatrix} 0 & -2 & -6 \\ 1 & 0 & -3 \end{bmatrix}$$
+
+Dalam contoh ini kita memiliki $[A]_{23} = -3$ dan $[A]_{ii} = 0$ untuk $i = 1, 2$.
+
+### Definisi 2.1.5. Kesamaan Matriks. Misalkan $A$ dan $B$ adalah matriks dengan dimensi $m \times n$ dan $m' \times n'$, masing-masing. Dua matriks tersebut *sama* jika:
+1. $m = m'$ dan $n = n'$;
+2. $[A]_{ij} = [B]_{ij}$ untuk semua $1 \le i \le m$ dan $1 \le j \le n$.
+
+Dengan kata lain, kita memiliki $A = B$ jika dan hanya jika $A$ dan $B$ memiliki bentuk yang sama, dan setiap entri dari $A$ sama dengan entri yang bersesuaian dari $B$.
+
+### Contoh 2.1.6. Kesamaan Matriks. 
+
+Matriks
+  $$A = \begin{bmatrix} 1 & 2 & 3 & 4 \end{bmatrix} \quad B = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}$$
+ 
+tidak sama satu sama lain, meskipun mereka memiliki entri yang sama yang muncul kira-kira dalam urutan yang sama. Dalam kasus ini kesamaan tidak berlaku karena $A$ dan $B$ memiliki bentuk yang berbeda: $A$ adalah $1 \times 4$, dan $B$ adalah $4 \times 1$.
+ 
+Matriks $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ dan $B = \begin{bmatrix} 1 & 2 \\ 5 & 4 \end{bmatrix}$ memiliki dimensi yang sama, tetapi tidak sama karena $[A]_{21} = 3 \ne 5 = [B]_{21}$.
+
+### Definisi 2.1.7. Matriks persegi, vektor baris, vektor kolom, matriks nol.
+
+Sebuah matriks $A$ adalah *bujur sangkar (persegi)* jika dimensinya adalah $n \times n$. *Diagonal* dari sebuah matriks persegi $A = [a_{ij}]_{n \times n}$ terdiri dari entri-entri $a_{ii}$ untuk $1 \le i \le n$.
+ 
+Sebuah matriks $1 \times n$
+$$\mathbf{a} = \begin{bmatrix} a_1 & a_2 & \cdots & a_n \end{bmatrix}$$
+disebut **vektor baris**. Entri ke-$j$ dari sebuah vektor baris $\mathbf{a}$ dilambangkan $[\mathbf{a}]_j$.
+Sebuah matriks $n \times 1$
+$$\mathbf{b} = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_m \end{bmatrix}$$
+disebut **vektor kolom**. Entri ke-$i$ dari sebuah vektor kolom $\mathbf{b}$ dilambangkan $[\mathbf{b}]_i$.
+**$m \times n$ matriks nol**, dilambangkan $\mathbf{0}_{m \times n}$, adalah matriks dengan dimensi tersebut, yang semua entrinya adalah nol; yaitu, $(\mathbf{0}_{m \times n})_{ij} = 0$ untuk semua $1 \le i \le m$ dan $1 \le j \le n$.
+Ketika ukuran dimensi tidak dibutuhkan untuk ditampilkan, kita akan menghapus subskrip dan menulis cukup $\mathbf{0}$ untuk sebuah matriks nol.
+
+### Catatan 2.1.8. Matriks sebagai kumpulan kolom/baris.
+
+Misalkan $A$ adalah sebuah matriks $m \times n$. Kita akan sering memikirkan $A$ sebagai kumpulan kolom, dalam hal ini kita menulis 
+$$A = \begin{bmatrix} | & | & & | \\ \mathbf{c}_1 & \mathbf{c}_2 & \cdots & \mathbf{c}_n \\ | & | & & | \end{bmatrix}$$  *(2.1.2)*
+dimana $\mathbf{c}_j$ adalah vektor kolom yang terdiri dari entri-entri dari kolom ke-$j$ dari $A$: yaitu, 
+$$\mathbf{c}_j = \begin{bmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{mj} \end{bmatrix}$$ 
+Demikian pula, ketika kita memikirkan $A$ sebagai kumpulan baris, kita menulis 
+$$A = \begin{bmatrix} — & \mathbf{r}_1 & — \\ — & \mathbf{r}_2 & — \\ & \vdots & \\ — & \mathbf{r}_m & — \end{bmatrix}$$  *(2.1.3)*
+dimana $\mathbf{r}_i$顶级 adalah vektor baris yang terdiri dari entri-entri dari baris ke-$i$ dari $A$: yaitu, 
+$$\mathbf{r}_i = \begin{bmatrix} a_{i1} & a_{i2} & \cdots & a_{in} \end{bmatrix}$$
+Garis vertikal dan horizontal digunakan untuk menekankan bahwa $\mathbf{c}_j$ adalah vektor kolom dan $\mathbf{r}_i$ adalah vektor baris.
+
+## 2.1.2 Penjumlahan, pengurangan dan perkalian skalar
+
+Kita sekarang membahas berbagai operasi aljabar yang akan kita gunakan untuk menggabungkan dan mengubah matriks; kita merujuk pada penggunaan operasi sebagai *aritmetika matriks*. Beberapa operasi ini menyerupai operasi aritmetika dalam hal notasi dan definisinya. Secara khusus, perhatikan dengan seksama (a) jenis objek matematika apa yang berfungsi sebagai input untuk setiap operasi (bahan operasi), dan (b) jenis objek matematika apa yang dikeluarkan.
+
+### Definisi 2.1.9. Penjumlahan dan pengurangan matriks.
+
+**Penjumlahan Matriks** adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks $m \times n$ $A = [a_{ij}]_{m \times n}$ dan $B = [b_{ij}]_{m \times n}$, kita mendefinisikan **jumlah** mereka menjadi matriks
+$$A + B := [a_{ij} + b_{ij}]_{m \times n}$$
+Dengan kata lain $A + B$ adalah matriks $m \times n$ yang memenuhi
+$$[A + B]_{ij} = [A]_{ij} + [B]_{ij} = a_{ij} + b_{ij}$$
+
+untuk semua $1 \le i \le m$ dan $1 \le j \le n$.
+ 
+**Pengurangan Matriks** adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks $m \times n$ $A = [a_{ij}]_{m \times n}$ dan $B = [b_{ij}]_{m \times n}$, kita mendefinisikan **selisih** mereka menjadi matriks 
+$$A - B := [a_{ij} - b_{ij}]_{m \times n}$$
+Dengan kata lain $A - B$ adalah matriks $m \times n$ yang memenuhi 
+$$[A - B]_{ij} = [A]_{ij} - [B]_{ij} = a_{ij} - b_{ij}$$
+untuk semua $1 \le i \le m$ dan $1 \le j \le n$
+
 # Operasi Baris Elementer Pada Matriks 
 
 ## 2.1 Operasi Baris Elementer Pada Matriks
